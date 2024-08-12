@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "proximos_proyectos",
+  "info": {
+    "singularName": "proximos-proyecto",
+    "pluralName": "proximos-proyectos",
+    "displayName": "proximos-proyectos",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "json"
+    },
+    "titulo": {
+      "type": "string"
+    }
+  }
+}

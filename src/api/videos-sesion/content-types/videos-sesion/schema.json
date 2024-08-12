@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "videos_sesiones",
+  "info": {
+    "singularName": "videos-sesion",
+    "pluralName": "videos-sesiones",
+    "displayName": "Videos Sesiones"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "id_videos": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    }
+  }
+}

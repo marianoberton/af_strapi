@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tweets_nds",
+  "info": {
+    "singularName": "tweets-nd",
+    "pluralName": "tweets-nds",
+    "displayName": "Tweets_ND"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "twitterUrl": {
+      "type": "string"
+    }
+  }
+}

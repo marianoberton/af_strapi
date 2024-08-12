@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "proyectos_presentados",
+  "info": {
+    "singularName": "proyectos-presentado",
+    "pluralName": "proyectos-presentados",
+    "displayName": "proyectos-presentados",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "json"
+    },
+    "titulo": {
+      "type": "string"
+    }
+  }
+}

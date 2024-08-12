@@ -34,6 +34,23 @@
         "audios",
         "images"
       ]
+    },
+    "author": {
+      "type": "string"
+    },
+    "author_img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "descripcion": {
+      "type": "text"
     }
   }
 }

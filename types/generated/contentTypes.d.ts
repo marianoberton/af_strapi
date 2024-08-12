@@ -362,42 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiArticleArticle extends Schema.CollectionType {
-  collectionName: 'articles';
-  info: {
-    singularName: 'article';
-    pluralName: 'articles';
-    displayName: 'Article';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    content: Attribute.Blocks;
-    summary: Attribute.String;
-    category: Attribute.String;
-    image: Attribute.Media<'files' | 'videos' | 'audios' | 'images'> &
-      Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -778,7 +742,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -807,6 +770,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -824,6 +789,235 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'Article';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.Blocks;
+    summary: Attribute.String;
+    category: Attribute.String;
+    image: Attribute.Media<'files' | 'videos' | 'audios' | 'images'> &
+      Attribute.Required;
+    author: Attribute.String;
+    author_img: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    descripcion: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMedioMedio extends Schema.CollectionType {
+  collectionName: 'medios';
+  info: {
+    singularName: 'medio';
+    pluralName: 'medios';
+    displayName: 'Medios';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    link: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::medio.medio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::medio.medio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProximosProyectoProximosProyecto
+  extends Schema.CollectionType {
+  collectionName: 'proximos_proyectos';
+  info: {
+    singularName: 'proximos-proyecto';
+    pluralName: 'proximos-proyectos';
+    displayName: 'proximos-proyectos';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    data: Attribute.JSON;
+    titulo: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::proximos-proyecto.proximos-proyecto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::proximos-proyecto.proximos-proyecto',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProyectosPresentadoProyectosPresentado
+  extends Schema.CollectionType {
+  collectionName: 'proyectos_presentados';
+  info: {
+    singularName: 'proyectos-presentado';
+    pluralName: 'proyectos-presentados';
+    displayName: 'proyectos-presentados';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    data: Attribute.JSON;
+    titulo: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::proyectos-presentado.proyectos-presentado',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::proyectos-presentado.proyectos-presentado',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTweetTweet extends Schema.CollectionType {
+  collectionName: 'tweets';
+  info: {
+    singularName: 'tweet';
+    pluralName: 'tweets';
+    displayName: 'Tweets';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    twitterUrl: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tweet.tweet',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tweet.tweet',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTweetsNdTweetsNd extends Schema.CollectionType {
+  collectionName: 'tweets_nds';
+  info: {
+    singularName: 'tweets-nd';
+    pluralName: 'tweets-nds';
+    displayName: 'Tweets_ND';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    twitterUrl: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tweets-nd.tweets-nd',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tweets-nd.tweets-nd',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiVideosSesionVideosSesion extends Schema.CollectionType {
+  collectionName: 'videos_sesiones';
+  info: {
+    singularName: 'videos-sesion';
+    pluralName: 'videos-sesiones';
+    displayName: 'Videos Sesiones';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    id_videos: Attribute.String;
+    date: Attribute.Date;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::videos-sesion.videos-sesion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::videos-sesion.videos-sesion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -834,7 +1028,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::article.article': ApiArticleArticle;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -843,6 +1036,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::article.article': ApiArticleArticle;
+      'api::medio.medio': ApiMedioMedio;
+      'api::proximos-proyecto.proximos-proyecto': ApiProximosProyectoProximosProyecto;
+      'api::proyectos-presentado.proyectos-presentado': ApiProyectosPresentadoProyectosPresentado;
+      'api::tweet.tweet': ApiTweetTweet;
+      'api::tweets-nd.tweets-nd': ApiTweetsNdTweetsNd;
+      'api::videos-sesion.videos-sesion': ApiVideosSesionVideosSesion;
     }
   }
 }
