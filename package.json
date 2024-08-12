@@ -20,8 +20,7 @@
     "node-fetch": "^3.3.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-router-dom": "5.3.4",
-    "strapi": "^3.6.11",
+    "react-router-dom": "^6.11.2",  
     "styled-components": "5.3.3"
   },
   "author": {
@@ -31,7 +30,7 @@
     "uuid": "40eb9fd1-6a87-4e05-ac7b-de86049e7b37"
   },
   "engines": {
-    "node": "18.x.0",
+    "node": "18.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
