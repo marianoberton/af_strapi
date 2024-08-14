@@ -13,8 +13,7 @@ module.exports = ({ env }) => ({
           thumbnail: 64,
         },
       },
-      // Ajusta la ruta aquí al directorio de tu carpeta uploads en tu disco persistente
-      path: 'src/database/uploads',
+      path: 'src/database', // Configura el directorio padre persistente
     },
   });
   
