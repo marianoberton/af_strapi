@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ig_posts",
+  "info": {
+    "singularName": "ig-post",
+    "pluralName": "ig-posts",
+    "displayName": "ig_posts"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data_ig": {
+      "type": "json"
+    }
+  }
+}

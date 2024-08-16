@@ -828,6 +828,36 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   };
 }
 
+export interface ApiIgPostIgPost extends Schema.CollectionType {
+  collectionName: 'ig_posts';
+  info: {
+    singularName: 'ig-post';
+    pluralName: 'ig-posts';
+    displayName: 'ig_posts';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    data_ig: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ig-post.ig-post',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ig-post.ig-post',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMedioMedio extends Schema.CollectionType {
   collectionName: 'medios';
   info: {
@@ -1037,6 +1067,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::article.article': ApiArticleArticle;
+      'api::ig-post.ig-post': ApiIgPostIgPost;
       'api::medio.medio': ApiMedioMedio;
       'api::proximos-proyecto.proximos-proyecto': ApiProximosProyectoProximosProyecto;
       'api::proyectos-presentado.proyectos-presentado': ApiProyectosPresentadoProyectosPresentado;
