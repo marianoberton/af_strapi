@@ -804,12 +804,26 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     title: Attribute.String;
     content: Attribute.Blocks;
     summary: Attribute.String;
-    category: Attribute.String;
     image: Attribute.Media<'files' | 'videos' | 'audios' | 'images'> &
       Attribute.Required;
-    author: Attribute.String;
-    author_img: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     descripcion: Attribute.Text;
+    fecha_de_publicacion: Attribute.Date & Attribute.Required;
+    slug: Attribute.UID<'api::article.article', 'title'>;
+    tags: Attribute.Relation<
+      'api::article.article',
+      'manyToMany',
+      'api::tag.tag'
+    >;
+    meta_title: Attribute.String;
+    meta_description: Attribute.Text;
+    Destacado: Attribute.Boolean;
+    tiempo_lectura: Attribute.Integer;
+    hero_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    author: Attribute.Relation<
+      'api::article.article',
+      'manyToOne',
+      'api::author.author'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -821,6 +835,44 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAuthorAuthor extends Schema.CollectionType {
+  collectionName: 'authors';
+  info: {
+    singularName: 'author';
+    pluralName: 'authors';
+    displayName: 'Authors';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    articles: Attribute.Relation<
+      'api::author.author',
+      'oneToMany',
+      'api::article.article'
+    >;
+    bio: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::author.author',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::author.author',
       'oneToOne',
       'admin::user'
     > &
@@ -957,6 +1009,33 @@ export interface ApiProyectosPresentadoProyectosPresentado
   };
 }
 
+export interface ApiTagTag extends Schema.CollectionType {
+  collectionName: 'tags';
+  info: {
+    singularName: 'tag';
+    pluralName: 'tags';
+    displayName: 'tags';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    articles: Attribute.Relation<
+      'api::tag.tag',
+      'manyToMany',
+      'api::article.article'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTweetTweet extends Schema.CollectionType {
   collectionName: 'tweets';
   info: {
@@ -1067,10 +1146,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::article.article': ApiArticleArticle;
+      'api::author.author': ApiAuthorAuthor;
       'api::ig-post.ig-post': ApiIgPostIgPost;
       'api::medio.medio': ApiMedioMedio;
       'api::proximos-proyecto.proximos-proyecto': ApiProximosProyectoProximosProyecto;
       'api::proyectos-presentado.proyectos-presentado': ApiProyectosPresentadoProyectosPresentado;
+      'api::tag.tag': ApiTagTag;
       'api::tweet.tweet': ApiTweetTweet;
       'api::tweets-nd.tweets-nd': ApiTweetsNdTweetsNd;
       'api::videos-sesion.videos-sesion': ApiVideosSesionVideosSesion;
