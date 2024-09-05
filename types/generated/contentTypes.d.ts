@@ -943,6 +943,40 @@ export interface ApiMedioMedio extends Schema.CollectionType {
   };
 }
 
+export interface ApiNoticiaNoticia extends Schema.CollectionType {
+  collectionName: 'noticias';
+  info: {
+    singularName: 'noticia';
+    pluralName: 'noticias';
+    displayName: 'noticias';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    link: Attribute.String;
+    fecha_de_publicacion: Attribute.Date;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::noticia.noticia',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::noticia.noticia',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProximosProyectoProximosProyecto
   extends Schema.CollectionType {
   collectionName: 'proximos_proyectos';
@@ -1149,6 +1183,7 @@ declare module '@strapi/types' {
       'api::author.author': ApiAuthorAuthor;
       'api::ig-post.ig-post': ApiIgPostIgPost;
       'api::medio.medio': ApiMedioMedio;
+      'api::noticia.noticia': ApiNoticiaNoticia;
       'api::proximos-proyecto.proximos-proyecto': ApiProximosProyectoProximosProyecto;
       'api::proyectos-presentado.proyectos-presentado': ApiProyectosPresentadoProyectosPresentado;
       'api::tag.tag': ApiTagTag;
