@@ -1,15 +1,12 @@
-// config/plugins.js
 module.exports = ({ env }) => ({
   upload: {
     config: {
       provider: "cloudinary",
       providerOptions: {
-        // Configuración para Cloudinary
         cloud_name: env('CLOUDINARY_NAME'),
         api_key: env('CLOUDINARY_KEY'),
         api_secret: env('CLOUDINARY_SECRET'),
-        // Configuración para local
-        sizeLimit: 1000000000, // 1GB para el proveedor local
+        sizeLimit: 1000000000, // 1GB
       },
       actionOptions: {
         upload: {},
@@ -24,5 +21,19 @@ module.exports = ({ env }) => ({
       },
     },
     path: 'src/database', // Configura el directorio padre persistente
+  },
+  
+  // Configuración de SendGrid
+  email: {
+    config: {
+      provider: 'sendgrid',
+      providerOptions: {
+        apiKey: env('SENDGRID_API_KEY'),
+      },
+      settings: {
+        defaultFrom: 'marianoberton@hotmail.com',
+        defaultReplyTo: 'marianoberton@hotmail.com',
+      },
+    },
   },
 });
