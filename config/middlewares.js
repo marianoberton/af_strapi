@@ -18,9 +18,8 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['http://localhost:3000', 'https://af-strapi-8y5n.onrender.com/'], // Agrega aquí tu dominio
-      methods: ['GET', 'POST', 'PUT', 'DELETE'],
-      credentials: true,
+      enabled: true,
+      origin: ['https://www.agustinforchieri.com.ar'], // Aquí se especifica tu dominio
     },
   },
   'strapi::poweredBy',
